@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_seed',
     'store',
+    'basket',
 ]
 
 MIDDLEWARE = [

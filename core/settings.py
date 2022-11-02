@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django-bs4',
+    # 'django.forms',
     'django_seed',
     'store',
     'basket',

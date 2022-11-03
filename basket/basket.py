@@ -3,7 +3,7 @@ from decimal import Decimal
 from store.models import Product
 
 
-class Basket():
+class Basket:
     """
     A base Basket class, providing some default behaviors that
     can be inherited or override, as necessary.
@@ -64,9 +64,17 @@ class Basket():
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
 
-    def get_subtotal(self):
-        all_subtotals = [Decimal(item['price']) * item['qty'] for item in self.basket.values()]
-        return all_subtotals
+    def get_subtotal(self, product):
+        # all_subtotals = [Decimal(item['price']) * item['qty'] for item in self.basket.values()]
+        product_id = str(product)
+        print(product_id)
+        for item_id in self.basket.keys():
+            if product_id == item_id:
+                item_details = list(self.basket[product_id].values())
+                print(item_details[0])
+                print(item_details[1])
+                subtotal = Decimal(item_details[0]) * item_details[1]
+                return subtotal
 
     def delete(self, product):
         """
@@ -76,7 +84,6 @@ class Basket():
 
         if product_id in self.basket:
             del self.basket[product_id]
-            print(product_id)
             self.save()
 
     def save(self):
